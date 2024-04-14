@@ -62,8 +62,8 @@ private:
     auto sub_node = std::make_shared<SubNode<pcl::PointCloud<pcl::POINT_TYPE>>>(          \
       options, [&](const pcl::PointCloud<pcl::POINT_TYPE> & point_cloud) {                \
         EXPECT_TRUE(&pub_point_cloud == &point_cloud);                                    \
-        RCLCPP_INFO_STREAM(rclcpp::get_logger("pub : ", << &pub_point_cloud));            \
-        RCLCPP_INFO_STREAM(rclcpp::get_logger("sub : ", << &point_cloud));                \
+        RCLCPP_INFO_STREAM(rclcpp::get_logger("pub : " << &pub_point_cloud));             \
+        RCLCPP_INFO_STREAM(rclcpp::get_logger("sub : " << &point_cloud));                 \
         point_cloud_recieved = true;                                                      \
       });                                                                                 \
     auto pub_node = std::make_shared<PubNode<pcl::PointCloud<pcl::POINT_TYPE>>>(options); \
