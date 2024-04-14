@@ -72,6 +72,33 @@ TEST(TypeAdaptaer, PointXYZ)
   rclcpp::shutdown();
   EXPECT_TRUE(point_cloud_recieved);
 }
+
+#define DEFINE_PUB_SUB_TEST(POINT_TYPE)                                                   \
+  TEST(TypeAdaptaer, POINT_TYPE)                                                          \
+  {                                                                                       \
+    bool point_cloud_recieved = false;                                                    \
+    rclcpp::init(0, nullptr);                                                             \
+    rclcpp::NodeOptions options;                                                          \
+    options.use_intra_process_comms(true);                                                \
+    const auto point_cloud = pcl::PointCloud<pcl::POINT_TYPE>();                          \
+    auto sub_node = std::make_shared<SubNode<pcl::PointCloud<pcl::POINT_TYPE>>>(          \
+      options, [&](const pcl::PointCloud<pcl::POINT_TYPE> & point_cloud) {                \
+        EXPECT_TRUE(&point_cloud == &point_cloud);                                        \
+        point_cloud_recieved = true;                                                      \
+      });                                                                                 \
+    auto pub_node = std::make_shared<PubNode<pcl::PointCloud<pcl::POINT_TYPE>>>(options); \
+    pub_node->publish(point_cloud);                                                       \
+    rclcpp::executors::SingleThreadedExecutor exec;                                       \
+    exec.add_node(sub_node);                                                              \
+    exec.add_node(pub_node);                                                              \
+    exec.spin_some();                                                                     \
+    rclcpp::shutdown();                                                                   \
+    EXPECT_TRUE(point_cloud_recieved);                                                    \
+  }
+
+DEFINE_PUB_SUB_TEST(PointXYZI)
+
+#undef DEFINE_PUB_SUB_TEST
 }  // namespace pcl_type_adapter
 
 int main(int argc, char ** argv)
