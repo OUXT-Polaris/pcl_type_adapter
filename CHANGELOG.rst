@@ -2,8 +2,8 @@
 Changelog for package pcl_type_adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2024-04-15)
+------------------
 * fix README
 * Merge pull request `#2 <https://github.com/OUXT-Polaris/pcl_type_adapter/issues/2>`_ from OUXT-Polaris/feature/zero_copy
   Feature/zero copy
