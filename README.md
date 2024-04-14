@@ -20,7 +20,11 @@ public:
 private:
   std::shared_ptr<rclcpp::Publisher<AdaptedType>> publisher_;
 };
+```
 
+### Subscribe pointcloud
+
+```cpp
 class SubNode : public rclcpp::Node
 {
 public:
