@@ -21,20 +21,20 @@
 #include <sensor_msgs/msg/point_cloud2.hpp>
 
 template <typename PCL_POINTCLOUD_TYPE>
-struct rclcpp::TypeAdapter<PCL_POINTCLOUD_TYPE, sensor_msgs::msg::PointCloud2>
+struct rclcpp::TypeAdapter<boost::shared_ptr<PCL_POINTCLOUD_TYPE>, sensor_msgs::msg::PointCloud2>
 {
   using is_specialized = std::true_type;
-  using custom_type = PCL_POINTCLOUD_TYPE;
+  using custom_type = boost::shared_ptr<PCL_POINTCLOUD_TYPE>;
   using ros_message_type = sensor_msgs::msg::PointCloud2;
 
   static void convert_to_ros_message(const custom_type & source, ros_message_type & destination)
   {
-    pcl::toROSMsg(source, destination);
+    pcl::toROSMsg(*source, destination);
   }
 
   static void convert_to_custom(const ros_message_type & source, custom_type & destination)
   {
-    pcl::fromROSMsg(source, destination);
+    pcl::fromROSMsg(source, *destination);
   }
 };
 
