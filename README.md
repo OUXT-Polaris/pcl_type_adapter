@@ -30,11 +30,10 @@ class SubNode : public rclcpp::Node
 public:
   using AdaptedType = rclcpp::TypeAdapter<pcl::PointCloud::PointXYZ, sensor_msgs::msg::PointCloud2>;
   explicit SubNode(
-    const rclcpp::NodeOptions & options,
-    const std::function<void(const pcl::PointCloud::PointXYZ &)> function)
+    const rclcpp::NodeOptions & options)
   : Node("test", options)
   {
-    subscriber_ = create_subscription<AdaptedType>("pointcloud", 1, function);
+    subscriber_ = create_subscription<AdaptedType>("pointcloud", 1, [](const auto & pointcloud){});
   }
 
 private:
