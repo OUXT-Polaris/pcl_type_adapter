@@ -10,12 +10,12 @@ ROS 2 package of type adapter for transferring point clouds via zero-copy commun
 class PubNode : public rclcpp::Node
 {
 public:
-  using AdaptedType = rclcpp::TypeAdapter<pcl::PointCloud::PointXYZ, sensor_msgs::msg::PointCloud2>;
+  using AdaptedType = rclcpp::TypeAdapter<pcl::PointCloud::PointXYZ::Ptr, sensor_msgs::msg::PointCloud2>;
   explicit PubNode(const rclcpp::NodeOptions & options) : Node("test", options)
   {
     publisher_ = create_publisher<AdaptedType>("pointcloud", 1);
   }
-  void publish(const pcl::PointCloud::PointXYZ & point_cloud) { publisher_->publish(point_cloud); }
+  void publish(const pcl::PointCloud::PointXYZ::Ptr & point_cloud) { publisher_->publish(point_cloud); }
 
 private:
   std::shared_ptr<rclcpp::Publisher<AdaptedType>> publisher_;
@@ -28,7 +28,7 @@ private:
 class SubNode : public rclcpp::Node
 {
 public:
-  using AdaptedType = rclcpp::TypeAdapter<pcl::PointCloud::PointXYZ, sensor_msgs::msg::PointCloud2>;
+  using AdaptedType = rclcpp::TypeAdapter<pcl::PointCloud::PointXYZ::Ptr, sensor_msgs::msg::PointCloud2>;
   explicit SubNode(
     const rclcpp::NodeOptions & options)
   : Node("test", options)
