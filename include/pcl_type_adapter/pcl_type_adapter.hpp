@@ -38,6 +38,4 @@ struct rclcpp::TypeAdapter<std::shared_ptr<PCL_POINTCLOUD_TYPE>, sensor_msgs::ms
   }
 };
 
-#undef DEFINE_TYPE_ADAPTER
-
 #endif  // PCL_TYPE_ADAPTER__PCL_TYPE_ADAPTER_HPP_
