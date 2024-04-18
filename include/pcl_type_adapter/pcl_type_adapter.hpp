@@ -34,6 +34,7 @@ struct rclcpp::TypeAdapter<std::shared_ptr<PCL_POINTCLOUD_TYPE>, sensor_msgs::ms
 
   static void convert_to_custom(const ros_message_type & source, custom_type & destination)
   {
+    destination = std::shared_ptr<PCL_POINTCLOUD_TYPE>(new PCL_POINTCLOUD_TYPE);
     pcl::fromROSMsg(source, *destination);
   }
 };
