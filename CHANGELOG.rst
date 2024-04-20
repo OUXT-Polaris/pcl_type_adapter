@@ -2,6 +2,18 @@
 Changelog for package pcl_type_adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.0 (2024-04-20)
+------------------
+* Merge pull request `#4 <https://github.com/OUXT-Polaris/pcl_type_adapter/issues/4>`_ from OUXT-Polaris/feature/initialize_pointer
+  Feature/initialize pointer
+* Merge remote-tracking branch 'origin/master' into feature/use_stl
+* add initialize pointer
+* Merge pull request `#3 <https://github.com/OUXT-Polaris/pcl_type_adapter/issues/3>`_ from OUXT-Polaris/feature/use_stl
+  Feature/use stl
+* use stl
+* use stl
+* Contributors: Masaya Kataoka, hakuturu583
+
 0.0.2 (2024-04-15)
 ------------------
 * fix README

@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>pcl_type_adapter</name>
-  <version>0.0.2</version>
+  <version>0.1.0</version>
   <description>TODO: Package description</description>
   <maintainer email="ms.kataoka@gmail.com">masaya</maintainer>
   <license>Apache-2.0</license>
